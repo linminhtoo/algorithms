@@ -4,6 +4,8 @@ class Solution:
     @staticmethod
     #  [1, 5, 9, 1, 1], 1, 1)
     def containsNearbyAlmostDuplicate(nums: List[int], k: int, t: int) -> bool:
+        '''CORRECT SOLUTION 
+        '''
         window = OrderedDict() # <bucket>: <value>
         
         for num in nums:
