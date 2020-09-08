@@ -4,7 +4,6 @@ class Node(object):
         self.right = right
         self.left = left
     
-
 class Solution(object):
     def _isValidBSTHelper(self, n, low, high):
         if not n:
