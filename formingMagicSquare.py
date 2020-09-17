@@ -36,6 +36,8 @@ for arr in pos:
         mindiff = diff
         
 print(mindiff)
+
+
 '''
 PROBLEM: the output matrices of rotateMultiple all end up becoming the same. no idea why
 '''
