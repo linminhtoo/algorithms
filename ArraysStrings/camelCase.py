@@ -59,6 +59,7 @@ class Trie:
 
 class Trie_Solution:
     def camelMatch(self, queries: List[str], pattern: str) -> List[bool]:
+        
         def find(node, p_i, pattern, cur_word, table):
             if p_i >= len(pattern):
                 if node.is_word:
