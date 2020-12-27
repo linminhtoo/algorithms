@@ -1,7 +1,6 @@
 class Solution():
     def checkPermutation(self, stringA: str, stringB: str):
-        ''' Assumes strings are lower-cased 
-        '''
+        stringA, stringB = stringA.lower(), stringB.lower() 
         if set(stringA).symmetric_difference(set(stringB)): # strings have different characters in them
             return False
         return True

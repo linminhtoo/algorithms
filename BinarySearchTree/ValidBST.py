@@ -3,6 +3,24 @@ class Node(object):
         self.val = val
         self.right = right
         self.left = left
+
+class Solution_veryfast:
+    def isValidBST(self, root: Node) -> bool:
+        if not root:
+            return True
+        stack = []
+        pre = None
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if pre != None and pre.val >= root.val:
+                return False
+            pre = root
+            root = root.right
+            
+        return True
     
 class Solution(object):
     def _isValidBSTHelper(self, n, low, high):
