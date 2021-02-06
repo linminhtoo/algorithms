@@ -73,6 +73,41 @@ class Iterative_Solution:
       node = nextNode
     return head
 
+# more examples
+# https://leetcode.com/problems/merge-two-sorted-lists/discuss/9771/Simple-5-lines-Python
+class Solution_recursion_5lines:
+    def mergeTwoLists(self, a, b):
+        if a and b:
+            if a.val > b.val:
+                a, b = b, a
+            a.next = self.mergeTwoLists(a.next, b)
+        return a or b
+
+class Solution_iterative_leetcode:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        dummy = ListNode(0)
+        curr_node = dummy
+        while l1 and l2:
+            if l1.val <= l2.val:
+                curr_node.next = l1
+                curr_node = l1
+                l1 = l1.next
+            else:
+                curr_node.next = l2
+                curr_node = l2
+                l2 = l2.next
+        curr_node.next = l1 or l2
+        # actually while loop is redundant. just need to connect once, not every single piece.
+        # while l1:
+        #     curr_node.next = l1
+        #     curr_node = l1
+        #     l1 = l1.next
+        # while l2:
+        #     curr_node.next = l2
+        #     curr_node = l2
+        #     l2 = l2.next
+        return dummy.next
+
 if __name__ == '__main__':
   # Test program
   # 1 -> 3 ->5
