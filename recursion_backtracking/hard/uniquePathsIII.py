@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/unique-paths-iii/submissions/
 # good practice for backtracking!
+from typing import List
 class Solution:
     def uniquePathsIII(self, grid: List[List[int]]) -> int:
         self.res, steps = 0, 1
