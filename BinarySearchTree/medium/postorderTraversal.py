@@ -29,7 +29,7 @@ class Solution_iterative:
             while not isLeaf(curr):
                 stack.append(curr)
                 curr = curr.left
-            if curr:
+            if curr: # to account for cases where parent has no right child/subtree, so parent.right == None
                 res.append(curr.val)
             while stack and curr == stack[-1].right:
                 curr = stack.pop() # what we popped is the parent of curr (which we explored already)

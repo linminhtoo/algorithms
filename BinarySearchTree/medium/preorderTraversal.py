@@ -31,6 +31,7 @@ class Solution_recursive_helper:
         return self.helper(root, [])
             
 class Solution_iterative:
+    # not generalizable to in/post order Traversal
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
             return []
