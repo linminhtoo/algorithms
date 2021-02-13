@@ -13,6 +13,34 @@ class TreeNode:
 # Here I attach my solution of postorderTrav without reversing pre-order.
 # The key point is when you pop a node from stack, you ensure you have already explored its children.
 class Solution_iterative:
+    # this is a bit more intuitive to reproduce
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        stack, res = [], []
+        curr, last = root, None
+        while stack or curr:
+            if curr:
+                # for every node, ensure we visit its left child first
+                stack.append(curr)
+                curr = curr.left
+            else:
+                curr = stack[-1] # peek
+                # either curr.right doesnt exist, in which case we do visit curr, 
+                # or if curr.right exists, ensure the last node we visited is that
+                if not curr.right or last == curr.right:
+                    curr = stack.pop()
+                    res.append(curr.val)
+                    last = curr
+                    curr = None
+                else:
+                    # curr.right exists, and we didn't visit it on the previous while loop,
+                    # so we have to visit it first
+                    curr = curr.right
+        return res
+
+class Solution_iterative_2:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
             return []
@@ -26,6 +54,9 @@ class Solution_iterative:
         stack = []
         curr = root
         while curr or stack:
+            # to check: why not isLeaf(curr) wont be True higher up in the tree
+            # is it bcos we will only encounter leafs
+            # and if a node is not a leaf, we will already be in the inner while loop (curr == stack[-1].right)
             while not isLeaf(curr):
                 stack.append(curr)
                 curr = curr.left
@@ -37,6 +68,7 @@ class Solution_iterative:
             if not stack:
                 curr = None # want to break while curr loop
             else:
+                # this will force us to go to node.right if node.left is None (on bottomleft of tree)
                 curr = stack[-1].right
         return res
         

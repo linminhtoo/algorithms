@@ -7,7 +7,7 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    # DFS with stack
+    # DFS with stack (but can also do recursive or recursive w/ helper or BFS w/ queue)
     # adapted directly from DFS with stack from pathSumI.py
     def pathSum(self, root: TreeNode, targetSum: int) -> List[List[int]]:
         if not root:
