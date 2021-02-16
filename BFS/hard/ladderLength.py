@@ -12,7 +12,7 @@ class Solution:
                 combos[word[:i] + '*' + word[i+1:]].append(word)
                 
         queue = deque([(beginWord, 1)])
-        visited = set([beginWord])
+        visited = set([beginWord]) # needed to prevent cycles, e.g. ['hot', 'dog'] can keep going in cycles
         while queue:
             curr, dist = queue.popleft()
             if curr == endWord:
