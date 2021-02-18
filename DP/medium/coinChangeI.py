@@ -1,4 +1,5 @@
 from collections import deque
+from typing import List
 class Solution:
     # BFS? should work i think
     # but how to tell if no valid combo exists
