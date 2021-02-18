@@ -31,3 +31,34 @@ class Solution_recursive_memo:
         
         ans = solve(0, False)
         return ans if ans != float('inf') else -1
+
+class Solution_BFS:
+    def minimumJumps(self, forbidden: List[int], a: int, b: int, x: int) -> int:
+        # Shortest distance to x : min jumps
+        forbidden = set(forbidden)
+        queue = deque([(0,False)])
+        ans = 0
+        seen = set()
+        seen.add((0,False))
+        while queue:
+            for _ in range(len(queue)):
+                curr, is_last_backward = queue.popleft()
+                if curr == x:
+                    return ans
+                
+                # Jump forward
+                next_pos = curr + a
+                if next_pos not in forbidden and next_pos < 4000 and (next_pos,False) not in seen:
+                    queue.append((next_pos, False))
+                    seen.add((next_pos, False))
+                # Jump backward
+                if not is_last_backward:
+                    next_pos = curr - b
+                    if next_pos >= 0 and next_pos not in forbidden and (next_pos, True) not in seen :
+                        queue.append((next_pos,True))
+                        seen.add((next_pos, True))
+         
+                
+            ans += 1
+        
+        return -1

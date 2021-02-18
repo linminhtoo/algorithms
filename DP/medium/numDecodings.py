@@ -1,5 +1,30 @@
 # https://leetcode.com/problems/decode-ways/submissions/
 # https://leetcode.com/problems/decode-ways/discuss/253018/Python%3A-Easy-to-understand-explanation-bottom-up-dynamic-programming
+class Solution_recursion_memo:
+    def numDecodings(self, s):
+        L = len(s)
+        
+        def helper(idx, memo):
+            if idx == L:
+                return 1
+            if idx > L or s[idx] == '0': # we cannot land on '0' or exceed s
+                return float('-inf')
+            
+            if idx in memo:
+                return memo[idx]
+            else:
+                if s[idx] == '1' or (s[idx] == '2' and int(s[idx:idx+2]) < 27):
+                    one = helper(idx+1, memo)
+                    two = helper(idx+2, memo)
+                    res = max(one, 0) + max(two, 0)
+                else:
+                    res = helper(idx+1, memo)
+                memo[idx] = res
+                return res
+            
+        res = helper(0, {})
+        return res if res != float('-inf') else 0    
+        
 class Solution_dp_table:
     def numDecodings(self, s: str) -> int:
         if not s or s[0]=='0':
