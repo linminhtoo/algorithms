@@ -2,6 +2,7 @@
 
 # nice DP solution
 # https://leetcode.com/problems/longest-palindromic-substring/discuss/151144/Bottom-up-DP-Logical-Thinking
+
 class Solution: # mine but not the fastest, since I have to loop twice. time O(N^2)
     def longestPalindrome(self, S: str) -> str:
         best = (0, 0)
@@ -49,3 +50,23 @@ class Solution_dp: # dp solution from link above, but actually it is quite slow,
         # print(dp)
         # print(start, longest)
         return S[start:start+longest]
+
+class Solution_nodptable:
+    # @return a string
+    def longestPalindrome(self, s):
+        if len(s)==0:
+        	return 0
+        maxLen=1
+        start=0
+        for i in range(len(s)):
+            # move pointer left by 1
+        	if i-maxLen >=1 and s[i-maxLen-1:i+1]==s[i-maxLen-1:i+1][::-1]:
+        		start=i-maxLen-1
+        		maxLen+=2
+        		continue
+
+            # do not move pointer left
+        	if i-maxLen >=0 and s[i-maxLen:i+1]==s[i-maxLen:i+1][::-1]:
+        		start=i-maxLen
+        		maxLen+=1
+        return s[start:start+maxLen]
