@@ -59,6 +59,8 @@ class Solution:
                 return
             self.res = max(self.res, cur)
             for j, w in enumerate(words[i:], i):
+                # this is basically checking that every letter in word can be subtracted by c
+                # if that is the case, w - c = {} (empty) hence (not w - c) == True
                 if not w - c:
                     dfs(j+1, cur + score[j], c - w)
         dfs(0, 0, Counter(letters))

@@ -1,6 +1,9 @@
 # https://leetcode.com/problems/palindrome-partitioning/
 from typing import List
 class Solution:
+    # downside of this is it is difficult to memoize
+    # will be too slow when len(S) is large, like >= 49 already TLE
+    # this is a problem for partitionII
     def partition(self, s: str) -> List[List[str]]:
         res = []
         self.dfs(s, [], res)

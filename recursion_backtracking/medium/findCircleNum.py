@@ -58,11 +58,10 @@ class Solution_UF:
             return root
         
         n = len(M)
-        circles = {x:x for x in range(n)}
-        num = n
+        circles = {x:x for x in range(n)} # map nodes to their roots
         for i in range(n):
             for j in range(i, n):
                 if i != j and M[i][j] == 1 and find(i) != find(j):
                     circles[find(i)] = find(j)   
                     
-        return sum([1 for k, v in circles.items() if k == v])
+        return sum([1 for k, v in circles.items() if k == v]) # find number of roots, which are basically circles[node] = node

@@ -87,7 +87,7 @@ class Solution_queue:
             if q.qsize() > K:
                 q.get() # remove farthest point from queue
         
-		res = []
+        res = []
         while K > 0:
             point = q.get()[1]
             res.append(point)

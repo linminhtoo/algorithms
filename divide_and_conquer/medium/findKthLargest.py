@@ -17,9 +17,9 @@ class Solution:
             nums[a], nums[r] = nums[r], nums[a]
             return a
             
-        def sort(nums, l, r, K):
+        def sort(nums, l, r, K): # finding Kth smallest element
             if l < r:
-                pivot_idx = random.randint(l, r)
+                pivot_idx = random.randint(l, r) # inclusive
                 pivot_idx = partition(nums, l, r, pivot_idx)
                 
                 # K = smallest Kth element --> we need to enter K = L-k
