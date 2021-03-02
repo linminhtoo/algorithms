@@ -1,6 +1,7 @@
 from collections import Counter
 from functools import lru_cache
 from typing import List
+# https://leetcode.com/problems/ones-and-zeroes/discuss/95808/0-1-knapsack-in-python
 class Solution:
     def findMaxForm(self, strs: List[str], m: int, n: int) -> int:
         L = len(strs)
