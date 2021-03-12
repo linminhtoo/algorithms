@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/sort-characters-by-frequency/submissions/
-from collections import Counter
+from collections import Counter, defaultdict
 import heapq
 class Solution:
     def frequencySort(self, s: str) -> str:
@@ -10,7 +10,7 @@ class Solution:
             # -freq --> inverts the minheap to a maxheap
             heapq.heappush(h, (-freq, char)) # each append is O(logN)
         res = ""
-        for i in range(len(h)): # this can have at most N items
+        for _ in range(len(h)): # this can have at most N items
             freq, char = heapq.heappop(h) # each pop is O(logN)
             res += char * -freq
         return res # time complexity is O(NlogN), extra space is O(N)

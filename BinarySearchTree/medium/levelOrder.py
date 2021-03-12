@@ -11,12 +11,12 @@ class Solution:
         if not root:
             return []
         res = []
-        q = [root]
+        q = [root] # q = collections.deque([root])
         while q:
             lvl_count = len(q)
             lvl_res = []
             while lvl_count:
-                curr = q.pop(0) # popleft
+                curr = q.pop(0) # q.popleft()
                 lvl_res.append(curr.val)
                 if curr.left:
                     q.append(curr.left)
