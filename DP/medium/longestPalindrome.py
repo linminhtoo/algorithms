@@ -7,7 +7,7 @@ class Solution: # mine but not the fastest, since I have to loop twice. time O(N
     def longestPalindrome(self, S: str) -> str:
         best = (0, 0)
         longest = 1
-        for i, s in enumerate(S):
+        for i in range(len(S)):
             l, r = i, i + 1
             length = 0
             while l >= 0 and r <= len(S) - 1 and S[l] == S[r]:
@@ -18,7 +18,7 @@ class Solution: # mine but not the fastest, since I have to loop twice. time O(N
                 best = (l+1, r-1)
                 longest = length
                 
-        for i, s in enumerate(S):
+        for i in range(len(S)):
             l, r = i - 1, i + 1
             length = 1
             while l >= 0 and r <= len(S) - 1 and S[l] == S[r]:
